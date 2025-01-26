@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-primary;
+    box-sizing: border-box;
+    @apply overflow-x-hidden;
+  }
+
+  header {
+    @apply flex items-center justify-between w-screen bg-primary p-6 px-12 z-10;
+  }
+
+  footer {
+    @apply flex flex-col items-center justify-between w-screen min-h-28 bg-primary child:w-full px-6 pt-6 pb-2;
+  }
+
+  header > *,
+  footer > * {
+    @apply text-lg;
+  }
+
+  input {
+    @apply bg-primary p-2 rounded-lg appearance-none transition border-b-4 focus:outline-none focus:border-b-2;
+  }
+
+  nav > ul {
+    @apply flex items-center justify-between child:flex-1 w-full space-x-12;
+  }
+
+  .hamburger-menu-button {
+    @apply relative hidden w-10 h-12 cursor-pointer;
+  }
+
+  .hamburger-menu-button > span {
+    @apply absolute w-full border-2 border-white h-[2px] transition-all duration-300;
+  }
+
+  .hamburger-menu-button > span:nth-child(1) {
+    @apply top-1/4;
+  }
+
+  .hamburger-menu-button > span:nth-child(2) {
+    @apply top-2/4;
+  }
+
+  .hamburger-menu-button > span:nth-child(3) {
+    @apply top-3/4;
+  }
+
+  .hamburger-menu-button.active > span:nth-child(1) {
+    @apply top-1/2 -rotate-45;
+  }
+
+  .hamburger-menu-button.active > span:nth-child(2) {
+    @apply hidden;
+  }
+
+  .hamburger-menu-button.active > span:nth-child(3) {
+    @apply top-1/2 rotate-45;
+  }
+
+  .about-us-heading {
+    font-size: clamp(1rem, 1rem * 7vw, 6rem);
+  }
+
+  @media (width <= 1024px) {
+    nav {
+      @apply flex-col items-center justify-center bg-primary fixed top-0 right-[-1000px] w-full max-w-[75%] h-[100dvh] transition duration-500;
+    }
+
+    nav.open {
+      @apply right-0;
+    }
+
+    ul {
+      @apply flex-col items-center justify-center h-4/6;
+    }
+
+    ul li {
+      @apply child:text-2xl;
+    }
+
+    .hamburger-menu-button {
+      @apply block;
+    }
+  }
+}
